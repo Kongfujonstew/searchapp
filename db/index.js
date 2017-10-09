@@ -8,12 +8,27 @@ const db = mongoose.connection;
     console.log('Connected to db at location: ' + location);
 });
 
+const person = {
+  name: 'String',
+  surname: 'String',
+  location: 'String'
+}
 
-const schema = new mongoose.Schema({ queue: 'String' });
+const personSchema = new mongoose.Schema(person);
+const Person = mongoose.model('Person', personSchema, 'people');
+
+// const jeff = new Person({
+//   name: 'jeff',
+//   surname: 'tester',
+//   location: 'theinternets'
+// });
+
+// jeff.save();
 
 
-const Queue = mongoose.model('Queue', schema, 'queues');
+// Person.find({ name: 'jeff' }, (err, person) => {
+//   if (err) return handleError(err);
+//   console.log('person: ', person);
+// })
 
-
-
-export default db;
+export default Person;
