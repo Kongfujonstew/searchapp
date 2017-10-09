@@ -3,6 +3,8 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import path from 'path';
 
+import db from './db/index';
+
 const app = express();
 const port = process.env.PORT || 8080;
 
