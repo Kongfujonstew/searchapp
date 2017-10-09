@@ -10,40 +10,22 @@ schema {
 }
 
 type Query {
-  users: [User]
-  user: User
-  messages: [Message]
-  message: Message
+  allPeople: [Person]
+  person: Person
+  findByName: [Person]
+  findByLocation: [Person]
   count: Int
 }
 
 type Mutation {
-  addUser(name:String, password:String): User
-  addMessage(user:Int!, text:String!): Message
+  addPerson(name:String!, surname:String!, location:String!): Person
 }
 
-type User {
-  id: ID!
-  name: String!
-  password: String!
+type Person {
+  name:String!
+  surname:String!
+  location:String!
 }
-
-type UserInput {
-  name: String!
-  password: String!
-}
-
-type Message {
-  id: ID!
-  user: ID!
-  date: Date
-  text: String!
-}
-
-scalar Date {
-  date: Int
-}
-
 `
 
 const schema = makeExecutableSchema({typeDefs, resolvers})

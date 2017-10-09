@@ -1,47 +1,36 @@
-export default {
-  Query: {
-    users: () => users,
-    user: (root, { id }) => users[id],
-    messages: () => messages,
-    // message: (root, { userid }) => //implement later on the db. . .
-    count: () => {
-      console.log('count called')
-      return 2
-    }
-  },
-  Mutation: {
-    //just for testing!
-    addUser: (root, { name, password } ) => {
-      return {id:999, name, password}
-    },
-    addMessage: (root, { user, text} ) => { 
-      return {id: 888, user, text, date: new Date() }
-    }
-  }
-}
+import db from '../db/index';
+
+export const allPeople = () => {};
+export const person = () => {};
+export const findByName = (query) => {};
+export const findByLocation = (query) => {};
+export const count = () => {console.log('Ill never be used')};
+export const addPerson = (name, surname, location) => {};
+
+
 
 //UNNEEDED - REMOVE THIS ONCE DB IS SET UP
 //dummy data - mock database
-const count = 2
-const testuser = {
-  id: 1,
-  name: 'testUser',
-  password: 'illneverbeused'
-};
-const users = [testuser];
-const testmessage = {
-  id: 1,
-  user: 1,
-  date: new Date(),
-  text: 'success success success'
-};
-const testmessage2 = {
-  id: 2,
-  user: 1,
-  date: new Date(),
-  text: 'win win win'
-};
-const messages = [testmessage, testmessage2];
+// const count = 2
+// const testuser = {
+//   id: 1,
+//   name: 'testUser',
+//   password: 'illneverbeused'
+// };
+// const users = [testuser];
+// const testmessage = {
+//   id: 1,
+//   user: 1,
+//   date: new Date(),
+//   text: 'success success success'
+// };
+// const testmessage2 = {
+//   id: 2,
+//   user: 1,
+//   date: new Date(),
+//   text: 'win win win'
+// };
+// const messages = [testmessage, testmessage2];
 
 
 

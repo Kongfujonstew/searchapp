@@ -17,6 +17,9 @@ const person = {
 const personSchema = new mongoose.Schema(person);
 const Person = mongoose.model('Person', personSchema, 'people');
 
+//example or operation:
+// find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
+
 // const jeff = new Person({
 //   name: 'jeff',
 //   surname: 'tester',
