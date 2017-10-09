@@ -4,7 +4,7 @@
   "description": "simple react/graphql search app",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js --exec babel-node --presets babel-preset-es2015",
+    "start": "babel-node server.js --exec babel-node --presets babel-preset-es2015",
     "dev": "NODE_ENV='development' webpack --watch",
     "build": "NODE_ENV='production' webpack --env.prod -p"
   },
