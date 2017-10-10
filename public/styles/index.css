@@ -1,3 +1,32 @@
+/*Base and Resets*/
+
 body {
+  font-family: Raleway;
+}
+
+html, body, h1, div, input, p, button {
   margin: 0;
+  padding: 0;
+};
+
+
+/*Header and Footer*/
+header, footer {
+  color: white;
+  height: 100px;
+  position: absolute;
+}
+
+header {
+  top: 0;
+}
+
+footer {
+  bottom: 0;
+}
+
+/*Forms*/
+
+#forms {
+  display: flex;
 }

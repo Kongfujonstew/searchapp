@@ -1,16 +1,32 @@
 import React from 'react';
 import { render } from 'react-dom';
-
-// import { browserAuthenticate, login, logout, warnUser } from './js/auth';
+import Forms from './Forms';
+import Results from './Results';
 
 class Main extends React.Component {
   constructor () {
     super();
+    this.state = {
+      query: '',
+      results: []
+    };
   }
+
+  componentDidMount() {
+    console.log('Welcome.')
+  }
+
+
 
   render () {
     return (
-      <div>Hello from Main</div>
+      <main>
+        <header>Jon Michael Stewart</header>
+        <div>Hello from Main</div>
+        <Forms />
+        <Results />
+        <footer>Thanks!</footer>
+      </main>
     );
   }
 };

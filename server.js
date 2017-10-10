@@ -23,10 +23,11 @@ app.use('/graphiql', graphiqlExpress({
 app.use(bodyParser.json());
 
 app.post('/graphql', (req, res) => {
+  console.log('body on request: ', req.body)
   graphql(schema, req.body.query)
   .then((result) => {
     console.log('result', result);
-    res.send(JSON.stringify(result/*, null, 2*/));
+    res.send(JSON.stringify(result));
   });
 });
 
