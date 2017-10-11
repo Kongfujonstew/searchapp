@@ -11,20 +11,35 @@ html, body, h1, div, input, p, button {
 }
 
 main {
-  margin-left: 12.5%;
+  margin: 0 auto;
 }
+
 .container {
-  border: 1px solid grey;
+  border-top: 1px solid grey;
   width: 75%;
   margin: 30px;
+  margin-top: 10px;
   width: 600px;
 }
+
+/*Text*/
+
+h1 {
+  margin-left: 30px;
+}
+
+h3 {
+  color: purple;
+}
+
+/*Buttons*/
 
 .hover {
   border: 1px solid grey;
   padding: 5px;
   margin-top: 5px;
   text-align: center;
+  width: 150px;
 }
 
 .hover:hover {
@@ -52,6 +67,20 @@ footer {
   position: fixed;
 }
 
+#hamburger {
+  background-image: url('../images/hamburger.png');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 5px 0 0 30px;
+  height: 40px;
+  width: 40px;
+}
+
+#hamburger:hover {
+  cursor: pointer;
+}
+
 /*Forms*/
 
 #forms {
@@ -59,16 +88,25 @@ footer {
   padding-bottom: 30px;
 }
 
-#forms .form {
-  margin: 0 45px 0 45px;
+#forms .left{
+  margin-right: 91px;
 }
 
-#forms .left{
-  margin-right: 90px;
+input {
+  line-height: 1.5;
+  font-family: Raleway;
+  font-size: 16px;
+  margin: 5px 0 10px 0;
+  padding: 5px;
+  width: 250px;
 }
 
 #searchButton {
-  margin-top: 106px;
+  margin-top: 15px;
+}
+
+#showAllButton {
+  margin-top: 129px;
 }
 
 #addButton {
@@ -101,6 +139,22 @@ footer {
   padding: 5px;
   width: 260px;
   overflow: hidden;
+}
+
+.locationCard {
+  background-image: url('../images/pin.png');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 5px 10px 0 5px;
+  height: 16px;
+  width: 16px;
+}
+
+#return {
+  border: none;
+  display: block;
+  width: 600px;
 }
 
 

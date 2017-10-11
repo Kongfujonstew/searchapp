@@ -23,7 +23,7 @@ export default {
     },
     elasticPeople: (p, { searchString }) => {
       const rego = createRegex(searchString);
-      if (!searchString.length) { return [] }
+      if (searchString.length <= 1) { return [] }
       return db.find({$or: [{name:rego},{surname:rego},{location:rego}]}, (err, result) => {
         if (err) {
           console.log('err: ', err);
@@ -33,7 +33,7 @@ export default {
       });
     },
     findByName:  (p, { name }) => {
-      return db.find({name: name}, (err, result) =>{
+      return db.find({name: name}, (err, result) => {
         if (err) {
           console.log('db error: ', err);
         } else {
@@ -42,7 +42,7 @@ export default {
       });
     },
     findBySurname:  (p, { surname }) => {
-      return db.find({surname: surname}, (err, result) =>{
+      return db.find({surname: surname}, (err, result) => {
         if (err) {
           console.log('db error: ', err);
         } else {
@@ -51,7 +51,7 @@ export default {
       });
     },
     findByLocation:  (p, { location }) => {
-      return db.find({location: location}, (err, result) =>{
+      return db.find({location: location}, (err, result) => {
         if (err) {
           console.log('db error: ', err);
         } else {

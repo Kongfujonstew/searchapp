@@ -8,10 +8,13 @@ export default (props) => {
     <div>
       <header>Server-side: Node.js/Express, GraphQL, Mongoose.  <br />
         Frontend: React, Axios, awesomeness </header>
+        <div id="hamburger" />
         <main>
           <Forms
+            getAllPeople={props.getAllPeople}
             search={props.search}
             addSomeone={props.addSomeone}
+            handleEnterKey={props.handleEnterKey}
           />
           <Results
             results={props.results}

@@ -15,6 +15,9 @@ export default (props) => {
             <p>{'Location: ' + location}</p>
           </div>
         }) : null}
+        {props.results.length ? <div id="return" className="hover"
+          onClick={() => window.scrollTo(0,0)}
+        >Return to top</div>: null}
       </div>
     </div>
   );
