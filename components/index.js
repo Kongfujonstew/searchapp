@@ -12,13 +12,22 @@ class Index extends React.Component {
     };
   }
 
+  getAllPeople () {
+    this.setState({searchMessage: 'Loading'});
+    allPeople().then((results) => {
+      this.setState({searchMessage: 'Results'});
+      console.log('results: ', results.data.data.allPeople);
+      this.setState({ results: results.data.data.allPeople });
+    });
+  }
+
   search () {
     const searchString = document.getElementById('query').value;
     this.setState({searchMessage: 'Loading'});
-    elasticPeople(query).then((results) => {
-      this.setState({searchMessage: 'Results'});
-      console.log('results: ', results);
-      this.setState({ results });
+    elasticPeople(searchString).then((results) => {
+      this.setState({searchMessage: results.data.data.elasticPeople.length ? 'Results' : 'No results found'});
+      console.log('results: ', results.data.data.elasticPeople);
+      this.setState({ results: results.data.data.elasticPeople });
     });
   }
 
@@ -36,6 +45,7 @@ class Index extends React.Component {
   render () {
     return (
       <Main
+        getAllPeople={this.getAllPeople.bind(this)}
         search={this.search.bind(this)}
         addSomeone={this.addSomeone.bind(this)}
         results={this.state.results}

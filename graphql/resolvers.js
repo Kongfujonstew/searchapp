@@ -1,4 +1,5 @@
 import db from '../db/index';
+import { createRegex } from './helpers';
 
 export default {
   Query: {
@@ -21,7 +22,15 @@ export default {
       })];
     },
     elasticPeople: (p, { searchString }) => {
-      return 4
+      const rego = createRegex(searchString);
+      if (!searchString.length) { return [] }
+      return db.find({$or: [{name:rego},{surname:rego},{location:rego}]}, (err, result) => {
+        if (err) {
+          console.log('err: ', err);
+        } else {
+          console.log('Query succes.  Entries found: ', result);
+        }
+      });
     },
     findByName:  (p, { name }) => {
       return db.find({name: name}, (err, result) =>{

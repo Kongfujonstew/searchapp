@@ -11,7 +11,7 @@ export default (props) => {
           document.getElementById('cards').className='container';
           const { name, surname, location } = result;
           return <div className="card" key={index}>
-            <p>{name || '<empty>'} {surname}</p>
+            <p>{name || '<noname>'} {surname}</p>
             <p>{'Location: ' + location}</p>
           </div>
         }) : null}

@@ -27,10 +27,16 @@ export const person = () => {
   });
 };
 
-export const elasticPeople = (query) => {
+export const elasticPeople = (searchString) => {
   return axios.post(url, {
     headers: { 'Content-Type': 'application/json' },
-    query: `query { count }`
+    query: `query {
+      elasticPeople (searchString:"${searchString}") {
+        name
+        surname
+        location
+      }
+    }`
   });
 };
 
