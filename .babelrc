@@ -8,6 +8,17 @@
       "plugins": [
         "transform-es2015-modules-commonjs"
       ]
+    },
+    "development": {
+      "presets": ["next/babel"]
+    },
+    "production": {
+      "presets": ["next/babel"]
+    },
+    "test": {
+      "presets": ["es2015", "next/babel"]
     }
   }
 }
+
+

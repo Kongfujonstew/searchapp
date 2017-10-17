@@ -1,5 +1,5 @@
 import axios from 'axios';
-const url = window.location + 'graphql';
+const url = 'http://localhost:3000/' + 'graphql';
 
 export const allPeople = () => {
   return axios.post(url, {
