@@ -11,7 +11,7 @@ var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var url = 'http://localhost:3000/' + 'graphql'; //
+var url = 'http://localhost:3000/' + 'graphql';
 
 var allPeople = exports.allPeople = function allPeople() {
   return _axios2.default.post(url, {

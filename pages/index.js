@@ -11,6 +11,15 @@
 //   );
 // };
 
+//
+import { bindActionCreators } from 'redux';
+import { updateResults, initStore, startClock, addCount, serverRenderClock } from '../redux/store';
+import withRedux from 'next-redux-wrapper';
+
+
+
+
+
 import React from 'react';
 import { render } from 'react-dom';
 import Main from '../components/Main.js';
@@ -24,13 +33,25 @@ class Index extends React.Component {
       searchMessage: 'Please enter a search'
     };
   }
+//
+  static getInitialProps ({ store, isServer }) {
+    store.dispatch(serverRenderClock(isServer))
+    store.dispatch(addCount())
+
+    return { isServer }
+  }
 
   getAllPeople () {
     this.setState({searchMessage: 'Loading'});
     allPeople().then((results) => {
       const resultsNum = results.data.data.allPeople.length;
       this.setState({searchMessage: 'Results: Show All'});
-      this.setState({ results: results.data.data.allPeople });
+
+
+      this.props.updateResults(results.data.data.allPeople);
+
+
+      // this.setState({ results: results.data.data.allPeople });
       if (resultsNum) window.scrollTo(0, 500);
     });
   }
@@ -84,4 +105,21 @@ class Index extends React.Component {
   }
 };
 
-export default Index;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateResults: bindActionCreators(updateResults, dispatch),
+    addCount: bindActionCreators(addCount, dispatch),
+    startClock: bindActionCreators(startClock, dispatch)
+  };
+};
+
+
+const withReduxConfig = {
+  createStore: initStore,
+  storeKey: 'reduxStore',
+  mapDispatchToProps: mapDispatchToProps
+};
+
+
+export default withRedux(withReduxConfig)(Index);

@@ -24,6 +24,14 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+var _redux = require('redux');
+
+var _store = require('../redux/store');
+
+var _nextReduxWrapper = require('next-redux-wrapper');
+
+var _nextReduxWrapper2 = _interopRequireDefault(_nextReduxWrapper);
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -37,19 +45,6 @@ var _Main2 = _interopRequireDefault(_Main);
 var _index = require('../components/axios/index.js');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// import React from 'react';
-// import { render } from 'react-dom';
-
-
-// export default (props) => {
-//   return (
-//     <div>
-//       This is the index Page
-//       NODE_ENV=production
-//     </div>
-//   );
-// };
 
 var Index = function (_React$Component) {
   (0, _inherits3.default)(Index, _React$Component);
@@ -65,6 +60,8 @@ var Index = function (_React$Component) {
     };
     return _this;
   }
+  //
+
 
   (0, _createClass3.default)(Index, [{
     key: 'getAllPeople',
@@ -75,7 +72,10 @@ var Index = function (_React$Component) {
       (0, _index.allPeople)().then(function (results) {
         var resultsNum = results.data.data.allPeople.length;
         _this2.setState({ searchMessage: 'Results: Show All' });
-        _this2.setState({ results: results.data.data.allPeople });
+
+        _this2.props.updateResults(results.data.data.allPeople);
+
+        // this.setState({ results: results.data.data.allPeople });
         if (resultsNum) window.scrollTo(0, 500);
       });
     }
@@ -133,11 +133,51 @@ var Index = function (_React$Component) {
         handleEnterKey: this.handleEnterKey.bind(this)
       });
     }
+  }], [{
+    key: 'getInitialProps',
+    value: function getInitialProps(_ref) {
+      var store = _ref.store,
+          isServer = _ref.isServer;
+
+      store.dispatch((0, _store.serverRenderClock)(isServer));
+      store.dispatch((0, _store.addCount)());
+
+      return { isServer: isServer };
+    }
   }]);
 
   return Index;
 }(_react2.default.Component);
+// import React from 'react';
+// import { render } from 'react-dom';
+
+
+// export default (props) => {
+//   return (
+//     <div>
+//       This is the index Page
+//       NODE_ENV=production
+//     </div>
+//   );
+// };
+
+//
+
 
 ;
 
-exports.default = Index;
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    updateResults: (0, _redux.bindActionCreators)(_store.updateResults, dispatch),
+    addCount: (0, _redux.bindActionCreators)(_store.addCount, dispatch),
+    startClock: (0, _redux.bindActionCreators)(_store.startClock, dispatch)
+  };
+};
+
+var withReduxConfig = {
+  createStore: _store.initStore,
+  storeKey: 'reduxStore',
+  mapDispatchToProps: mapDispatchToProps
+};
+
+exports.default = (0, _nextReduxWrapper2.default)(withReduxConfig)(Index);

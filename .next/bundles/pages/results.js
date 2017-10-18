@@ -1,6 +1,6 @@
 
           window.__NEXT_REGISTER_PAGE('/results', function() {
-            var comp = module.exports=webpackJsonp([5],{214:function(e,t,u){e.exports=u(215)},215:function(e,t,u){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=u(2),r=function(e){return e&&e.__esModule?e:{default:e}}(n);u(20);t.default=function(e){return r.default.createElement("div",null,"This is the new results page")}}},[214]);
+            var comp = module.exports=webpackJsonp([5],{243:function(e,t,r){e.exports=r(244)},244:function(e,t,r){"use strict";function u(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0});var n=r(12),o=u(n),l=r(2),a=u(l),s=r(3),i=u(s),d=r(13),f=u(d),c=r(14),p=u(c),v=r(1),S=u(v),_=(r(21),r(116),r(117)),m=(u(_),r(109),r(108)),y=u(m),h=r(107),E=function(e){function t(e){return(0,a.default)(this,t),(0,f.default)(this,(t.__proto__||(0,o.default)(t)).call(this,e))}return(0,p.default)(t,e),(0,i.default)(t,[{key:"render",value:function(){return S.default.createElement("div",{id:"results"},S.default.createElement("div",null,"NEW RESULTS"))}}],[{key:"getInitialProps",value:function(e){var t=e.store,r=e.isServer;e.pathname,e.query;return console.log(t.getState()),{isServer:r}}}]),t}(S.default.Component),g=function(e){return{results:e.results}},k={createStore:h.initStore,storeKey:"reduxStore",mapStateToProps:g};t.default=(0,y.default)(k)(E)}},[243]);
             return { page: comp.default }
           })
         
