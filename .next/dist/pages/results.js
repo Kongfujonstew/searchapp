@@ -36,8 +36,6 @@ var _link = require('next/dist/lib/link.js');
 
 var _link2 = _interopRequireDefault(_link);
 
-var _reactRedux = require('react-redux');
-
 var _nextReduxWrapper = require('next-redux-wrapper');
 
 var _nextReduxWrapper2 = _interopRequireDefault(_nextReduxWrapper);
@@ -54,7 +52,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 * @param {string} options.storeKey This key will be used to preserve store in global namespace for safe HMR 
 */
 
-//
 var Pages = function (_React$Component) {
   (0, _inherits3.default)(Pages, _React$Component);
 
@@ -67,7 +64,18 @@ var Pages = function (_React$Component) {
   (0, _createClass3.default)(Pages, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('div', { id: 'results' }, _react2.default.createElement('div', null, 'NEW RESULTS'));
+      return _react2.default.createElement('div', { id: 'results' }, _react2.default.createElement('div', null, 'RESULTS'), _react2.default.createElement('h3', { id: 'searchMessage' }, 'search message'), _react2.default.createElement('div', { id: 'cards' }, this.props.results.length ? this.props.results.map(function (result, index) {
+        document.getElementById('cards').className = 'container';
+        var name = result.name,
+            surname = result.surname,
+            location = result.location;
+
+        return _react2.default.createElement('div', { className: 'card', key: index }, _react2.default.createElement('p', null, name || '<noname>', ' ', surname), _react2.default.createElement('p', null, 'Location: ' + location));
+      }) : null, this.props.results.length ? _react2.default.createElement('div', { id: 'return', className: 'hover',
+        onClick: function onClick() {
+          return window.scrollTo(0, 0);
+        }
+      }, 'Return to top') : null));
     }
   }], [{
     key: 'getInitialProps',
@@ -77,15 +85,17 @@ var Pages = function (_React$Component) {
           pathname = _ref.pathname,
           query = _ref.query;
 
-      // store.dispatch(serverRenderClock(isServer))
-      // store.dispatch(addCount())
-      console.log(store.getState());
-      return { isServer: isServer };
+      var newState = store.getState();
+      console.log('gIP caleld, isServer: ', isServer);
+      if (isServer) return {};else return newState;
     }
   }]);
 
   return Pages;
 }(_react2.default.Component);
+
+//
+
 
 ;
 

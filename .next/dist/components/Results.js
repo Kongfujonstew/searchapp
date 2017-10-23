@@ -12,6 +12,10 @@ var _reactDom = require('react-dom');
 
 var _Card = require('./Card');
 
+var _link = require('next/dist/lib/link.js');
+
+var _link2 = _interopRequireDefault(_link);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (props) {
@@ -21,7 +25,7 @@ exports.default = function (props) {
         surname = result.surname,
         location = result.location;
 
-    return _react2.default.createElement('div', { className: 'card', key: index }, _react2.default.createElement('p', null, name || '<noname>', ' ', surname), _react2.default.createElement('p', null, 'Location: ' + location));
+    return _react2.default.createElement('div', { className: 'card', key: index }, _react2.default.createElement(_link2.default, { href: '/view?name=' + name }, _react2.default.createElement('p', null, name || '<noname>', ' ', surname)), _react2.default.createElement('p', null, 'Location: ' + location));
   }) : null, props.results.length ? _react2.default.createElement('div', { id: 'return', className: 'hover',
     onClick: function onClick() {
       return window.scrollTo(0, 0);

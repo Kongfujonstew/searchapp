@@ -2,15 +2,10 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Card } from '../components/Card';
 
-
 //
 import Link from 'next/link'
-import { connect } from 'react-redux'
 import withRedux from 'next-redux-wrapper';
 import { updateResults, initStore } from '../redux/store';
-
-
-
 
 
 /**
@@ -22,25 +17,37 @@ import { updateResults, initStore } from '../redux/store';
 */
 
 
-
 class Pages extends React.Component {
   constructor (props) {
     super(props);
   }
 
   static getInitialProps ({ store, isServer, pathname, query }) {
-    // store.dispatch(serverRenderClock(isServer))
-    // store.dispatch(addCount())
-    console.log(store.getState());
-    return { isServer }
+    const newState = store.getState();
+    console.log('gIP caleld, isServer: ', isServer)
+    if (isServer) return {};
+    else return newState;
   }
 
 
   render () {
     return (
       <div id="results">
-        <div>NEW RESULTS</div>
-
+        <div>RESULTS</div>
+        <h3 id="searchMessage">{'search message'}</h3>
+        <div id="cards">
+          {this.props.results.length ? this.props.results.map((result, index) => {
+            document.getElementById('cards').className='container';
+            const { name, surname, location } = result;
+            return <div className="card" key={index}>
+              <p>{name || '<noname>'} {surname}</p>
+              <p>{'Location: ' + location}</p>
+            </div>
+          }) : null}
+          {this.props.results.length ? <div id="return" className="hover"
+            onClick={() => window.scrollTo(0,0)}
+          >Return to top</div>: null}
+        </div>
       </div>
     );
   }

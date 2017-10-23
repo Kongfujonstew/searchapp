@@ -48,7 +48,6 @@ export const addCount = () => dispatch => {
 }
 
 export const initStore = (initialState = exampleInitialState) => {
-  console.log('init store working now');
   return createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)))
 }
 

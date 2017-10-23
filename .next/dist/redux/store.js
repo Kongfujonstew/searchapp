@@ -78,6 +78,5 @@ var addCount = exports.addCount = function addCount() {
 var initStore = exports.initStore = function initStore() {
   var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : exampleInitialState;
 
-  console.log('init store working now');
   return (0, _redux.createStore)(reducer, initialState, (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxThunk2.default)));
 };

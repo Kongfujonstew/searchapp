@@ -33,6 +33,7 @@ export default {
       });
     },
     findByName:  (p, { name }) => {
+      console.log('here is name in findbyName: ', name)
       return db.find({name: name}, (err, result) => {
         if (err) {
           console.log('db error: ', err);

@@ -2,6 +2,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Card } from './Card';
 
+import Link from 'next/link'
+
 export default (props) => {
   return (
     <div id="results">
@@ -11,7 +13,7 @@ export default (props) => {
           document.getElementById('cards').className='container';
           const { name, surname, location } = result;
           return <div className="card" key={index}>
-            <p>{name || '<noname>'} {surname}</p>
+            <Link href={`/view?name=${name}`} ><p>{name || '<noname>'} {surname}</p></Link>
             <p>{'Location: ' + location}</p>
           </div>
         }) : null}

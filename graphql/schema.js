@@ -13,7 +13,7 @@ type Query {
   allPeople: [Person]
   person: [Person]
   elasticPeople(searchString:String!): [Person]
-  findByName(name:String!): [Person]
+  findByName(name:String): [Person]
   findBySurname(surname:String!): [Person]
   findByLocation(location:String!): [Person]
   count: Int
